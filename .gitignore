@@ -1,4 +1,7 @@
-/pythonenv
+*.pyc
+*~
+__pycache__
+pythonenv
 db.sqlite3
 /static
 .DS_Store
