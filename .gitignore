@@ -1,6 +1,5 @@
-__pycache__
-pythonenv
+/pythonenv
 db.sqlite3
 /static
 .DS_Store
-requirements.tst
+requirements.txt
