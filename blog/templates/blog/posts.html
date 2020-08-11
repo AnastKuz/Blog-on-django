@@ -1,0 +1,30 @@
+{% for i in object_list %}
+<div class="row mb-5">
+    <div class="col-10 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                <a href="{% url 'detail' i.pk %}"><h2 class="text-dark">{{ i.title }}</h2></a>
+            </div>
+            <div class="card-body">
+                <div class="mb-5">
+                    {% if i.image %}
+                        <img class="bd-placeholder-img card-img-top img-fluid" width="100%" src="{{i.image.url}}">
+                    {% else %}
+                       <p></p>
+                    {% endif %}
+                </div>
+                <div class="d-flex">
+                    <div>
+                        <p>Post by {{ i.author }}</p>
+                        <p>Written on <small>{{ i.created_date }}</small></p>
+                    </div>
+                    <div class="ml-auto">
+                        <a href="{% url 'edit' i.pk %}" class="btn btn-primary mr-2">Edit</a>
+                        <a href="{% url 'delete' i.pk %}" class="btn btn-primary">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}

@@ -1,0 +1,17 @@
+{% extends 'blog/index.html' %}
+
+{% block content %}
+
+<h2 class="text-center mb-5">Update post</h2>
+
+<div class="row mb-5">
+    <div class="col-4 mx-auto">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="save btn btn-success">Update post</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

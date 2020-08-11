@@ -1,0 +1,27 @@
+{% extends 'blog/index.html' %}
+
+{% block content %}
+
+<div class="row mb-5">
+    <div class="col-10 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="text-dark">{{ object.title }}</h2>
+            </div>
+            <img class="card-img-top" src="{{ object.image.url }}" alt="Card image cap">
+            <div class="card-body d-flex">
+                <p>{{ object.text }}</p>
+            </div>
+            <div class="card-body d-flex">
+                <p>Post by {{ object.author }}</p>
+                <p>Written on <small>{{ object.created_date }}</small></p>
+                <div class="btn-group ml-auto">
+                    <a href="{% url 'edit' object.pk %}" class="btn btn-primary mr-2">Edit</a>
+                    <a href="{% url 'delete' object.pk %}" class="btn btn-primary">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
