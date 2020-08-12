@@ -1,0 +1,29 @@
+{% extends "blog/index.html" %}
+
+{% block content %}
+
+    <div class="row mb-5">
+        <div class="col-4 mx-auto">
+            <div class="form-group">
+                <form method="GET" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ filter.form.as_p }}
+                    <button type="submit" class="save btn btn-success">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4 mx-auto mb-3">
+            <h3>The list of posts:</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4 mx-auto">
+            {% for obj in filter.qs %}
+                <a href="{% url 'detail' obj.pk %}">{{ obj.title }}</a><br />
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

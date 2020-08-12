@@ -1,5 +1,7 @@
+from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from .filters import PostFilter
 from .forms import PostForm
 from .models import Post
 
@@ -12,6 +14,11 @@ class HomeView(ListView):
 class PostDetailView(DetailView):
     model = Post
     template_name = 'blog/details.html'
+
+
+def post_list(request):
+    f = PostFilter(request.GET, queryset=Post.objects.all())
+    return render(request, 'blog/list.html', {'filter': f})
 
 
 class AddPostView(CreateView):
